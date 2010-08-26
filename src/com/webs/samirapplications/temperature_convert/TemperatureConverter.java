@@ -45,7 +45,7 @@ public class TemperatureConverter extends Activity {
     private void calculateFa() 
 	{
 		temp=Double.parseDouble(in.getText().toString());
-		ans = (temp + 32)*(9.00/5.00);
+		ans = temp * (9.00/5.00) + 32;
 		txtanswer.setText(Double.toString(ans));
 	}
     private void calculateCe() 
