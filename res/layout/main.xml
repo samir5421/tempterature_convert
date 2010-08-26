@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Enter a temperature: "
+    />
+<EditText 
+	android:id="@+id/temp" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"></EditText>
+
+<Button 
+	android:text="Convert to Fahrenheit" 
+	android:id="@+id/toFa" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+</Button>
+
+<Button 
+	android:text="Convert to Celsius" 
+	android:id="@+id/toCe" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+	</Button>
+	
+<TextView  
+	android:id="@+id/txtanswer"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    />
+
+
+</LinearLayout>
