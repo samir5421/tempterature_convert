@@ -5,21 +5,20 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.Toast;
 import android.view.View;
-import java.lang.Math;
 
 
 
 public class TemperatureConverter extends Activity {
     /** Called when the activity is first created. */
 	
-	private EditText in;
-	private double temp = 0;
-	private double ans = 0;
-	private TextView txtanswer;
-	private Button toFa;
-	private Button toCe;
+	EditText in;
+	double temp = 0;
+	double ans = 0;
+	TextView txtanswer;
+	Button toFa;
+	Button toCe;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,12 +45,14 @@ public class TemperatureConverter extends Activity {
 	{
 		temp=Double.parseDouble(in.getText().toString());
 		ans = temp * (9.00/5.00) + 32;
-		txtanswer.setText(Double.toString(ans));
+		String answerf = ans + " degrees Fahrenheit";
+		txtanswer.setText(answerf);
 	}
     private void calculateCe() 
 	{
 		temp=Double.parseDouble(in.getText().toString());
 		ans = (temp - 32)*(5.00/9.00);
-		txtanswer.setText(Double.toString(ans));
+		String answerc = ans + " degrees Celsius";
+		txtanswer.setText(answerc);
 	}
 }
