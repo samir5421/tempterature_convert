@@ -26,6 +26,9 @@ public class TemperatureConverter extends Activity
 	Button C;
 	Button F;
 	Button K;
+	final String fah = "°F";
+	final String cel = "°C";
+	final String kel = " K";
 	
 	
     @Override
@@ -80,19 +83,19 @@ public class TemperatureConverter extends Activity
         toC.setOnClickListener(new Button.OnClickListener() 
       	{ 
       		public void onClick (View v)
-      		{ print(tempc);} 
+      		{ print(tempc, cel);} 
       		
        	});
       	toF.setOnClickListener(new Button.OnClickListener() 
       	{ 
       		public void onClick (View v)
-      		{ print(tempf);} 
+      		{ print(tempf, fah);} 
       		
        	});
       	toK.setOnClickListener(new Button.OnClickListener() 
       	{ 
       		public void onClick (View v)
-      		{ print(tempk);} 
+      		{ print(tempk, kel);} 
       		
        	});
     }
@@ -114,9 +117,9 @@ public class TemperatureConverter extends Activity
 		tempc = temp - 273.15;
 		tempf = (temp - 273.15) * (9/5) + 32;
 	}
-    public void print(double ans)
+    public void print(double ans, String deg)
     {
-    	String answer = ans + "";
+    	String answer = ans + deg;
     	txtanswer.setText(answer);
     }
     public void reset()
