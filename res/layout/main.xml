@@ -2,38 +2,96 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
+    android:layout_height="fill_parent">
+    <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="Enter a temperature: "
+    android:text=" Enter temperature:"
     />
 <EditText 
-	android:id="@+id/temp" 
+	android:text="" 
+	android:id="@+id/tempin" 
 	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"></EditText>
-
-<Button 
-	android:text="Convert to Fahrenheit" 
-	android:id="@+id/toFa" 
-	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content">
-</Button>
-
-<Button 
-	android:text="Convert to Celsius" 
-	android:id="@+id/toCe" 
+	</EditText>
+	<RelativeLayout 
+	android:id="@+id/RelativeLayout01" 
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    >
+    <Button 
+	android:text="  °F  " 
+	android:id="@+id/F" 
 	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content">
 	</Button>
-	
-<TextView  
-	android:id="@+id/txtanswer"
+
+<Button 
+	android:text="  °C  " 
+	android:id="@+id/C" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:layout_toRightOf="@id/F">
+	</Button>
+	<Button 
+	android:text="  K  " 
+	android:id="@+id/K" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:layout_toRightOf="@id/C">
+		</Button>
+		<TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:text=""
+    android:id="@+id/space1"
+    android:layout_below="@id/K"
+		/>
+    <TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="           to"
+    android:id="@+id/to"
+    android:layout_below="@id/space1"
     />
+    <TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/space2"
+    android:layout_below="@+id/to"
+		/>
+    
+<Button 
+	android:text="  °F  " 
+	android:id="@+id/toF" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:layout_below="@+id/space2">
+	</Button>
 
-
+<Button 
+	android:text="  °C  " 
+	android:id="@+id/toC" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:layout_below="@+id/space2"
+	android:layout_toRightOf="@id/toF">
+	</Button>
+	<Button 
+	android:text="  K  " 
+	android:id="@+id/toK" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:layout_below="@+id/space2"
+	android:layout_toRightOf="@id/toC">
+		</Button>
+	<TextView 
+	android:text="" 
+	android:id="@+id/txtanswer" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:layout_below="@+id/toK">
+	</TextView>
+	</RelativeLayout>
 </LinearLayout>

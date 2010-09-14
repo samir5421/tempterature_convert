@@ -9,50 +9,118 @@ import android.view.View;
 
 
 
-public class TemperatureConverter extends Activity {
+public class TemperatureConverter extends Activity 
+{
     /** Called when the activity is first created. */
 	
 	EditText in;
 	double temp = 0;
 	double ans = 0;
+	double tempc = 0;
+	double tempf = 0;
+	double tempk = 0;
 	TextView txtanswer;
-	Button toFa;
-	Button toCe;
+	Button toF;
+	Button toC;
+	Button toK;
+	Button C;
+	Button F;
+	Button K;
 	
 	
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) 
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        toFa = (Button)findViewById(R.id.toFa);
-        toCe = (Button)findViewById(R.id.toCe);
+        initControls();
+    }
+    
+    public void initControls()
+    {
+        toF = (Button)findViewById(R.id.toF);
+        toC = (Button)findViewById(R.id.toC);
+        toK = (Button)findViewById(R.id.toK);
+        C = (Button)findViewById(R.id.C);
+        F = (Button)findViewById(R.id.F);
+        K = (Button)findViewById(R.id.K);
         txtanswer = (TextView)findViewById(R.id.txtanswer);
-        in = (EditText)findViewById(R.id.temp);
-      	toFa.setOnClickListener(new Button.OnClickListener() 
+        in = (EditText)findViewById(R.id.tempin);
+        
+        F.setOnClickListener(new Button.OnClickListener() 
       	{ 
       		public void onClick (View v)
-      		{ calculateFa();} 
+      		{ 
+
+      	        temp=Double.parseDouble(in.getText().toString());
+      			F(temp);
+      		} 
       		
        	});
-      	toCe.setOnClickListener(new Button.OnClickListener() 
+        C.setOnClickListener(new Button.OnClickListener() 
+      	{ 
+        	public void onClick (View v)
+      		{ 
+
+      	        temp=Double.parseDouble(in.getText().toString());
+      			C(temp);
+      		} 
+      		
+       	});
+        K.setOnClickListener(new Button.OnClickListener() 
+      	{ 
+        	public void onClick (View v)
+      		{ 
+
+      	        temp=Double.parseDouble(in.getText().toString());
+      			K(temp);
+      		} 
+      		
+       	});
+        toC.setOnClickListener(new Button.OnClickListener() 
       	{ 
       		public void onClick (View v)
-      		{ calculateCe();} 
+      		{ print(tempc);} 
+      		
+       	});
+      	toF.setOnClickListener(new Button.OnClickListener() 
+      	{ 
+      		public void onClick (View v)
+      		{ print(tempf);} 
+      		
+       	});
+      	toK.setOnClickListener(new Button.OnClickListener() 
+      	{ 
+      		public void onClick (View v)
+      		{ print(tempk);} 
       		
        	});
     }
-    private void calculateFa() 
+    public void F(double temp)
+    {
+    	tempf = temp;
+    	tempc = (temp - 32) * (5/9);
+    	tempk = ((temp - 32) * (5/9))+ 273.15;
+    }
+    public void C(double temp) 
 	{
-		temp=Double.parseDouble(in.getText().toString());
-		ans = temp * (9.00/5.00) + 32;
-		String answerf = ans + " degrees Fahrenheit";
-		txtanswer.setText(answerf);
+		tempc = temp;
+		tempf = temp * (9/5) + 32;
+		tempk = temp + 273.15;
 	}
-    private void calculateCe() 
+    public void K(double temp) 
 	{
-		temp=Double.parseDouble(in.getText().toString());
-		ans = (temp - 32)*(5.00/9.00);
-		String answerc = ans + " degrees Celsius";
-		txtanswer.setText(answerc);
+		tempk = temp;
+		tempc = temp - 273.15;
+		tempf = (temp - 273.15) * (9/5) + 32;
 	}
+    public void print(double ans)
+    {
+    	String answer = ans + "";
+    	txtanswer.setText(answer);
+    }
+    public void reset()
+    {
+    	in.setText("");
+    }
 }
