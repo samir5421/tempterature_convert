@@ -1,10 +1,12 @@
 package com.webs.samirapplications.temperature_convert;
 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 import android.view.View;
 
 
@@ -26,8 +28,8 @@ public class TemperatureConverter extends Activity
 	Button C;
 	Button F;
 	Button K;
-	final String fah = "°F";
-	final String cel = "°C";
+	final String fah = "Â°F";
+	final String cel = "Â°C";
 	final String kel = " K";
 	
 	
@@ -54,9 +56,13 @@ public class TemperatureConverter extends Activity
       	{ 
       		public void onClick (View v)
       		{ 
-
+      			try{
       	        temp=Double.parseDouble(in.getText().toString());
       			F(temp);
+      			}
+      			catch(NumberFormatException e){
+    				error();	
+    			}
       		} 
       		
        	});
@@ -64,9 +70,12 @@ public class TemperatureConverter extends Activity
       	{ 
         	public void onClick (View v)
       		{ 
-
+        		try{
       	        temp=Double.parseDouble(in.getText().toString());
       			C(temp);
+        		}catch(NumberFormatException e){
+    				error();	
+    			}
       		} 
       		
        	});
@@ -74,9 +83,13 @@ public class TemperatureConverter extends Activity
       	{ 
         	public void onClick (View v)
       		{ 
-
+        		try{
       	        temp=Double.parseDouble(in.getText().toString());
       			K(temp);
+        		}
+        		catch(NumberFormatException e){
+    				error();	
+    			}
       		} 
       		
        	});
@@ -126,4 +139,7 @@ public class TemperatureConverter extends Activity
     {
     	in.setText("");
     }
+    public void error(){
+		{Toast.makeText(TemperatureConverter.this, R.string.error, Toast.LENGTH_LONG).show();}	
+	}
 }

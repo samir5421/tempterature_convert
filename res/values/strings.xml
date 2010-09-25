@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, TemperatureConverter!</string>
     <string name="app_name">Temperature Converter</string>
+<string name="error">An error has occured. Please enter a valid temperature.</string>
 </resources>
