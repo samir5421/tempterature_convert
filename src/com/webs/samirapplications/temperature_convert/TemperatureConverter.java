@@ -1,6 +1,5 @@
 package com.webs.samirapplications.temperature_convert;
 
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -9,12 +8,8 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.view.View;
 
-
-
 public class TemperatureConverter extends Activity 
 {
-    /** Called when the activity is first created. */
-	
 	EditText in;
 	double temp = 0;
 	double ans = 0;
@@ -28,21 +23,18 @@ public class TemperatureConverter extends Activity
 	Button C;
 	Button F;
 	Button K;
-	final String fah = "Â°F";
-	final String cel = "Â°C";
+	final String fah = "°F";
+	final String cel = "°C";
 	final String kel = " K";
 	
-	
     @Override
-    public void onCreate(Bundle savedInstanceState) 
-    {
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         initControls();
     }
     
-    public void initControls()
-    {
+    public void initControls(){
         toF = (Button)findViewById(R.id.toF);
         toC = (Button)findViewById(R.id.toC);
         toK = (Button)findViewById(R.id.toK);
@@ -52,93 +44,83 @@ public class TemperatureConverter extends Activity
         txtanswer = (TextView)findViewById(R.id.txtanswer);
         in = (EditText)findViewById(R.id.tempin);
         
-        F.setOnClickListener(new Button.OnClickListener() 
-      	{ 
-      		public void onClick (View v)
-      		{ 
+        F.setOnClickListener(new Button.OnClickListener(){ 
+      		public void onClick (View v){ 
       			try{
-      	        temp=Double.parseDouble(in.getText().toString());
-      			F(temp);
+					temp=Double.parseDouble(in.getText().toString());
+					F(temp);
       			}
-      			catch(NumberFormatException e){
+      			catch(Exception e){
     				error();	
     			}
       		} 
       		
        	});
-        C.setOnClickListener(new Button.OnClickListener() 
-      	{ 
-        	public void onClick (View v)
-      		{ 
+        C.setOnClickListener(new Button.OnClickListener(){ 
+        	public void onClick (View v){ 
         		try{
-      	        temp=Double.parseDouble(in.getText().toString());
-      			C(temp);
-        		}catch(NumberFormatException e){
+					temp=Double.parseDouble(in.getText().toString());
+					C(temp);
+        		}catch(Exception e){
     				error();	
     			}
-      		} 
-      		
+      		}
        	});
-        K.setOnClickListener(new Button.OnClickListener() 
-      	{ 
-        	public void onClick (View v)
-      		{ 
+        K.setOnClickListener(new Button.OnClickListener(){ 
+        	public void onClick (View v){ 
         		try{
-      	        temp=Double.parseDouble(in.getText().toString());
-      			K(temp);
+					temp=Double.parseDouble(in.getText().toString());
+					K(temp);
         		}
-        		catch(NumberFormatException e){
+        		catch(Exception e){
     				error();	
     			}
-      		} 
-      		
+      		}
        	});
-        toC.setOnClickListener(new Button.OnClickListener() 
-      	{ 
-      		public void onClick (View v)
-      		{ print(tempc, cel);} 
-      		
+        toC.setOnClickListener(new Button.OnClickListener(){ 
+      		public void onClick (View v){
+				print(tempc, cel);
+			}
        	});
-      	toF.setOnClickListener(new Button.OnClickListener() 
-      	{ 
-      		public void onClick (View v)
-      		{ print(tempf, fah);} 
-      		
+      	toF.setOnClickListener(new Button.OnClickListener(){ 
+      		public void onClick (View v){
+				print(tempf, fah);
+			}
        	});
-      	toK.setOnClickListener(new Button.OnClickListener() 
-      	{ 
-      		public void onClick (View v)
-      		{ print(tempk, kel);} 
-      		
+      	toK.setOnClickListener(new Button.OnClickListener(){ 
+      		public void onClick (View v){
+				print(tempk, kel);
+			}
        	});
     }
-    public void F(double temp)
-    {
+	
+    public void F(double temp){
     	tempf = temp;
-    	tempc = (temp - 32) * (5/9);
-    	tempk = ((temp - 32) * (5/9))+ 273.15;
+    	tempc = (temp - 32) / 1.8;
+    	tempk = tempc + 273.15;
     }
-    public void C(double temp) 
-	{
+	
+    public void C(double temp){
 		tempc = temp;
-		tempf = temp * (9/5) + 32;
-		tempk = temp + 273.15;
+		tempf = (temp * 1.8) + 32;
+		tempk = tempc + 273.15;
 	}
-    public void K(double temp) 
-	{
+	
+    public void K(double temp){
 		tempk = temp;
 		tempc = temp - 273.15;
-		tempf = (temp - 273.15) * (9/5) + 32;
+		tempf = (tempc * 1.8) + 32;
 	}
-    public void print(double ans, String deg)
-    {
+	
+    public void print(double ans, String deg){
     	String answer = ans + deg;
     	txtanswer.setText(answer);
     }
-    public void reset()
-    {
+	
+    public void reset(){
     	in.setText("");
     }
+	
     public void error(){
 		{Toast.makeText(TemperatureConverter.this, R.string.error, Toast.LENGTH_LONG).show();}	
 	}
